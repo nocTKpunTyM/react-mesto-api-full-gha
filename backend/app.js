@@ -6,6 +6,7 @@ const rateLimit = require('express-rate-limit');
 const { errors } = require('celebrate');
 const NotFoundError = require('./errors/not-found-err');
 const { signinValidation, signupValidation } = require('./middlewares/celebrate');
+const cors = require('./middlewares/cors');
 
 const { PORT = 3000, DB_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
 mongoose.connect(DB_URL);
@@ -21,6 +22,14 @@ const limiter = rateLimit({
   legacyHeaders: false,
 });
 app.use(limiter);
+
+app.use(cors);
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 const usersRouter = require('./routes/users');
 const cardsRouter = require('./routes/cards');
