@@ -1,0 +1,20 @@
+.lead__edit-button {
+    margin: 0 0 0 10px;
+    padding: 0;
+    width: 18px;
+    height: 18px;
+    background: none;
+    background-image: url(../../../images/lead-edit-button.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    border: 1px solid white;
+}
+
+@media screen and (min-width: 768px) {
+	.lead__edit-button {
+        margin: 5px 0 0 16px;
+        width: 24px;
+        height: 24px;
+    }
+}

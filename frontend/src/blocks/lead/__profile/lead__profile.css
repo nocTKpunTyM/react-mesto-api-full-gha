@@ -1,0 +1,15 @@
+.lead__profile {
+    margin-top: 25px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media screen and (min-width: 1024px) {
+	.lead__profile {
+        margin: 0 0 0 30px;
+        width: 600px;
+        justify-content: flex-start;
+    }
+}

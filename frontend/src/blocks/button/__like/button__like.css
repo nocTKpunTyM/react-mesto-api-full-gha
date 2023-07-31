@@ -1,0 +1,15 @@
+.button__like {
+    margin: 6px 20px 0 0;
+    padding: 0;
+    width: 22px;
+    height: 19px;
+    background: none;
+    background-image: url(../../../images/place-like.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+}
+
+.button__like:hover {
+    opacity: 50%;
+}

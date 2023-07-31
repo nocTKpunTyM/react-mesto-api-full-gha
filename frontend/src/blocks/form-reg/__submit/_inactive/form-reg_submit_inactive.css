@@ -1,0 +1,9 @@
+.form-reg_submit_inactive {
+    background-color: black;
+    border: 1px solid white;
+    color: white;
+}
+
+.form-reg_submit_inactive:hover {
+    opacity: 80%;
+}

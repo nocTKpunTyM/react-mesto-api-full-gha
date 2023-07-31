@@ -1,0 +1,7 @@
+.popup__info {
+    max-width: 358px;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

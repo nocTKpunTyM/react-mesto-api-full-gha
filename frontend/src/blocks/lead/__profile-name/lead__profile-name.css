@@ -1,0 +1,13 @@
+.lead__profile-name {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+@media screen and (min-width: 1024px) {
+	.lead__profile-name {
+        justify-content: flex-start;
+    }
+}

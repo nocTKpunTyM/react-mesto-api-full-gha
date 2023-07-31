@@ -1,0 +1,9 @@
+.popup__container_only-button {
+    min-height: 181px;
+}
+
+@media screen and (min-width: 490px) {
+    .popup__container_only-button {
+        min-height: 181px;
+    }
+}

@@ -1,0 +1,24 @@
+.lead {
+	margin-top: 42px;
+	width: 88%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+	.lead {
+        width: 70%;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.lead {
+		margin-top: 40px;
+		width: 90%;
+		max-width: 880px;
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+		align-items: center;
+	}
+}

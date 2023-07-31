@@ -1,0 +1,11 @@
+.lead__picture {
+    position: absolute;
+    width: 117px;
+    height: 120px;
+    background: none;
+    background-image: url(../../../images/lead-jak-iv-custo.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+}

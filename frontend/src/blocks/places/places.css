@@ -1,0 +1,21 @@
+.places {
+    margin-top: 36px;
+    width: 88%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 19px;
+}
+
+@media screen and (min-width: 768px) {
+	.places {
+        margin-top: 51px;
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+	.places {
+        width: 99%;
+        max-width: 880px;
+    }
+}

@@ -1,0 +1,17 @@
+.form-reg__input {
+    margin: 30px 0 0 0;
+    padding: 0;
+    width: 100%;
+    height: 27px;
+    border: none;
+    border-bottom: 1px solid rgba(204, 204, 204, 1);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: rgba(204, 204, 204, 1);
+    background-color: black;
+}
+
+.form-reg__input:focus {
+	outline: none;
+}
