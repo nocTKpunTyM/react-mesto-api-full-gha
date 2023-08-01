@@ -1,6 +1,6 @@
 import {checkResponse} from './checkResponse';
 
-export const BASE_URL = 'https://auth.nomoreparties.co';
+export const BASE_URL = 'https://noctkpuntym2.students.nomoreparties.co';
 
 export const register = ({ email, password }) => {
     return fetch(`${BASE_URL}/signup`, {
