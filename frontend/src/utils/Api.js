@@ -95,9 +95,8 @@ class Api {
 }
 
 export const api = new Api({
-    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-64',
+    baseUrl: 'https://noctkpuntym2.students.nomoreparties.co',
     headers: {
-        authorization: '92dc896a-714f-46b7-abd9-c8be237b7915',
         'Content-Type': 'application/json'
     }
 });
