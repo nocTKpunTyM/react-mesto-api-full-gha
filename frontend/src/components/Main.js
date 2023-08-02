@@ -3,7 +3,6 @@ import React from 'react';
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 
 function Main({
-  userData,
   onCardLike,
   onCardDelete,
   cards,
@@ -13,7 +12,6 @@ function Main({
   handleCardClick
 }) {
   const user = React.useContext(CurrentUserContext);
-
   return (
     <main className="main">
 

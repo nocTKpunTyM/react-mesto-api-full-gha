@@ -2,7 +2,6 @@ import headerLogo from '../images/header-logo.svg';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Header({ emailData, tokenCheck, handleLogout }) {
-
   const navigate = useNavigate();
   const path = window.location.pathname;
   function logOut() {

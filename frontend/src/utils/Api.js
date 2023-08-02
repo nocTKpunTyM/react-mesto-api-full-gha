@@ -97,6 +97,7 @@ class Api {
 export const api = new Api({
     baseUrl: 'https://noctkpuntym2.students.nomoreparties.co',
     headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
     }
 });

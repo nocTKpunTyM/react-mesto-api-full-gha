@@ -35,29 +35,19 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   const [loggedIn, setLoggedIn] = useState(false);
-  const [emailData, setEmailData] = useState('');
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    setEmailData('');
+    setCurrentUser('');
+    setLoggedIn(false);
   }
 
-  useEffect(() => {
-    Promise.all([api.getPlaces(), api.getProfile()])
-      .then(([cards, user]) => {
-        setCards(cards);
-        setCurrentUser(user)
-      }
-      )
-      .catch(console.error)
-  }, [])
-
   const tokenCheck = () => {
-    const token = localStorage.getItem('token');
-    if (token) {
+    const token = localStorage.getItem('token');      
+    if (token) {  
       auth.getContent(token)
-        .then((user) => {
-          setEmailData(user.data.email);
+        .then((user) => {       
+          setCurrentUser(user);
           setLoggedIn(true);
           navigate('/me');
         })
@@ -70,6 +60,16 @@ function App() {
   useEffect(() => {
     tokenCheck();
   }, [])
+ 
+  useEffect(() => {
+    if (currentUser.name) {
+      api.getPlaces()
+      .then((cards) =>
+      setCards(cards.reverse())
+      )
+      .catch(console.error)
+    }
+  }, [currentUser])
 
   function handleCardClick(card) {
     setSelectedCard(card);
@@ -96,9 +96,9 @@ function App() {
 
   // ФУНКЦИОНАЛ МЕСТ (КАРТОЧЕК)
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(i => i === currentUser._id);
     api.changeLike(card, isLiked)
-      .then((newCard) => {
+      .then((newCard) => {      
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
       })
       .catch(console.error)
@@ -106,7 +106,7 @@ function App() {
 
   function handleCardDelete(card) {
     api.delPlace(card._id)
-      .then((place) => {
+      .then(() => {
         setCards(cards.filter((place) => place._id !== card._id));
       })
       .catch(console.error)
@@ -183,7 +183,7 @@ function App() {
       <AppContext.Provider value={{ isLoading, closeAllPopups }}>
         <CurrentUserContext.Provider value={currentUser}>
           <Header
-            emailData={emailData}
+            emailData={currentUser.email}
             tokenCheck={tokenCheck}
             handleLogout={handleLogout}
           />
