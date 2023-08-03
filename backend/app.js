@@ -1,6 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const { errors } = require('celebrate');
@@ -38,7 +37,7 @@ const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const errorsMid = require('./middlewares/errors');
 
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(requestLogger); // подключаем логгер запросов
 
 app.post('/signin', signinValidation, login);

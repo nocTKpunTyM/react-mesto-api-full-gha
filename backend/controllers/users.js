@@ -1,3 +1,7 @@
+require('dotenv').config();
+
+const { NODE_ENV, JWT_SECRET } = process.env;
+
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
@@ -6,8 +10,7 @@ const ReplicateError = require('../errors/replicate-err');
 const ValidationError = require('../errors/validation-err');
 
 const createUser = (req, res, next) => {
-  const { email, password } = req.body;
-  if (!email || !password) return res.status(400).send({ message: 'Email и Пароль обязательны' });
+  const { password } = req.body;
   return bcrypt.hash(password, 10)
     .then((hash) => {
       User.create({ ...req.body, password: hash })
@@ -37,10 +40,16 @@ const login = (req, res, next) => {
   if (!email || !password) return res.status(401).send({ message: 'Email и Пароль обязательны' });
   return User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, 'some-secret-key', { expiresIn: '7d' });
+      const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
       res.send({ token });
     })
-    .catch((next));
+    .catch((err) => {
+      if (err.name === 'ValidationError') {
+        next(new ValidationError('Неккоректно введены данные'));
+      } else {
+        next(err);
+      }
+    });
 };
 
 const getUser = (req, res, next) => {
